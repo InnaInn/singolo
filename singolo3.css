@@ -1,0 +1,215 @@
+
+html, body, div, h1, h2, h3, h4, h5, h6, p, ul, li, span {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+
+img {
+    border: none;
+    margin: 0 6px
+}
+
+a, a:link, a:active, a:visited, a:hover {
+    text-decoration: none;
+    outline: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+body {
+    color: #767e9e;
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: 900;
+    color: #666d89;
+    margin: 0 0 21px 0;
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: 300;
+    color: #767e9e;
+    line-height: 1.6;
+}
+
+h4 {
+    font-size: 18px;
+    font-weight: 900;
+    color: #666d89;
+    margin: 0 0 10px 0;
+}
+
+p {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #767e9e;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.both {
+    clear: both;
+    display: block;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+}
+
+.inner {
+    margin: 0 auto;
+    max-width: 940px;
+    padding: 67px 10px;
+    overflow: hidden;
+}
+
+div.line3 {
+    width: 1020px;
+    height: 6px;
+    background-color: #ea676b;
+    margin: auto;
+    overflow: hidden;
+
+}
+
+#contact {
+
+    overflow: hidden;
+    max-width: 1020px;
+    height: 648px;
+    background-color: #f06c64;
+    margin: auto;
+}
+
+#contact h2,
+#contact h3,
+#contact h4,
+#contact p,
+#contact span {
+    color: #f0d8d9;
+}
+
+#contact ul {
+    padding: 44px 0 0 0;
+    overflow: hidden;
+}
+
+#contact ul li {
+    float: left;
+    display: inline;
+    max-width: 300px;
+    padding: 0 0 0 10px;
+}
+
+#contact ul li:first-child {
+    padding: 0 10px 0 0;
+    max-width: 620px;
+}
+
+
+/*noinspection DuplicatedCode*/
+input {
+    background: #d6564f;
+    max-width: 590px;
+    width: 590px;
+    height: 38px;
+    line-height: 38px;
+    border: 0;
+    font-size: 12px;
+    color: #f48c8f;
+    font-family: 'Lato', sans-serif;
+    padding: 0 15px;
+    margin: 0 0 16px 0;
+    outline: none;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+}
+
+/*noinspection DuplicatedCode*/
+textarea {
+    background: #d6564f;
+    max-width: 590px;
+    width: 590px;
+    height: 202px;
+    max-height: 202px;
+    border: 0;
+    padding: 15px;
+    margin: 0 0 16px 0;
+    outline: none;
+    overflow: auto;
+    resize: none;
+    font-size: 12px;
+    color: #f48c8f;
+    font-family: 'Lato', sans-serif;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#contact p {
+    margin: 0 0 25px 0;
+    text-align: justify;
+}
+
+#contact span {
+    display: block;
+    font-size: 12px;
+    margin: 0 0 6px 0;
+}
+
+#footer {
+    background: #2d303a;
+    overflow: hidden;
+    max-width: 1020px;
+    height: 76px;
+    margin: auto;
+}
+
+#footer .inner {
+    padding-top: 22px;
+    padding-bottom: 22px;
+}
+
+#footer p {
+    color: #666d89;
+}
+
+#footer p a {
+    line-height: 32px;
+    color: #666d89;
+}
+
+#footer ul {
+    float: right;
+}
+
+/*noinspection DuplicatedCode*/
+#footer ul li span {
+    font-family: "Lato", sans-serif;
+    float: left;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 10px 0 0;
+    background: transparent;
+    border-radius: 50%;
+    border: 1px solid #6a718c;
+    color: #6a718c;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+}
