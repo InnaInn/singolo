@@ -9,12 +9,25 @@ window.setTimeout(startScroll, 100);
 
 //-----------------scroll to sections
 
-const arrHeaderLinks = document.querySelectorAll('.header-navigation a');
-document.querySelector('.header-navigation ul').onclick = function (event) {
+
+let arrHeaderLinks = document.querySelectorAll('.jjj a');
+window.setTimeout(() => {
+    arrHeaderLinks.forEach(element => element.classList.remove('header-navigation_onclick'));
+    arrHeaderLinks[0].classList.add('header-navigation_onclick');
+}, 100);//---light 1 menu link after reload
+
+
+document.querySelector('.jjj ul').onclick = function (event) {
+    //document.onscroll = null;  //---disable menu lights
     for (let i = 0; i < arrHeaderLinks.length; i++) {
         if (event.target == arrHeaderLinks[i]) {
-            arrHeaderLinks.forEach(element => element.classList.remove('header-navigation_onclick'));
+            //arrHeaderLinks.forEach(element =>
+            // element.classList.remove('header-navigation_onclick'));
             arrHeaderLinks[i].classList.add('header-navigation_onclick');
+            arrHeaderLinks[i].classList.add('header-navigation_onclick-additional');//additional light menu button until jump to secton
+            window.setTimeout(() => {
+                arrHeaderLinks[i].classList.remove('header-navigation_onclick-additional');//remove additional light
+            }, 1000);
             event.preventDefault();
             if (i == 0) {
                 document.querySelector('.point1').scrollIntoView({
@@ -51,10 +64,122 @@ document.querySelector('.header-navigation ul').onclick = function (event) {
                     behavior: "smooth"
                 });
             }
-
         }
     }
+    // window.setTimeout(() => {                //---unable menu lights
+    //     document.onscroll = onScroll
+    // }, 1000);
+
 }
+//----menu item light depends to scroll
+document.onscroll = onScroll;
+
+function onScroll() {
+    let rect1 = document.querySelector('.point1').getBoundingClientRect().y;
+    let rect2 = document.querySelector('.point2').getBoundingClientRect().y;
+    let rect3 = document.querySelector('.point3').getBoundingClientRect().y;
+    let rect4 = document.querySelector('.point4').getBoundingClientRect().y;
+    let rect5 = document.querySelector('.point5').getBoundingClientRect().y;
+    let rectArr = [rect1, rect2, rect3, rect4, rect5, 10000];
+    for (let i = 0; i < 5; i++) {
+        if ((rectArr[i] - 95) < 0 && (rectArr[i + 1] - 95) > 0) {
+            arrHeaderLinks.forEach(element => element.classList.remove('header-navigation_onclick'));
+            arrHeaderLinks[i].classList.add('header-navigation_onclick');
+            arrHeaderLinksMobile.forEach(element => element.classList.remove('header-navigation_onclick'));
+            arrHeaderLinksMobile[i].classList.add('header-navigation_onclick');
+        }
+
+    }
+
+}
+
+
+//----------------------------------------------------fix double navigation
+//menu in html
+
+const arrHeaderLinksMobile = document.querySelectorAll('.hhh a');
+window.setTimeout(() => {
+    arrHeaderLinksMobile.forEach(element => element.classList.remove('header-navigation_onclick'));
+    arrHeaderLinksMobile[0].classList.add('header-navigation_onclick');
+}, 100);
+
+
+document.querySelector('.hhh ul').onclick = function (event) {
+    //console.log(event.target);
+    document.onscroll = null;
+    document.querySelector('.hamburger').classList.toggle('rotate');
+    document.querySelector('.logo a').classList.toggle('move-left');
+    document.querySelector('.nav-mobile').classList.toggle('nav-mobile__visible');
+    document.querySelector('.mega-wrapper').classList.toggle('mega-wrapper__visible');
+    for (let i = 0; i < arrHeaderLinksMobile.length; i++) {
+        if (event.target == arrHeaderLinksMobile[i]) {
+            arrHeaderLinksMobile.forEach(element => element.classList.remove('header-navigation_onclick'));
+            arrHeaderLinksMobile[i].classList.add('header-navigation_onclick');
+            event.preventDefault();
+            if (i == 0) {
+                document.querySelector('.point1').scrollIntoView({
+                    block: "end",
+                    inline: "nearest",
+                    behavior: "smooth"
+                });
+            }
+            if (i == 1) {
+                document.querySelector('.point2').scrollIntoView({
+                    block: "start",
+                    inline: "nearest",
+                    behavior: "smooth"
+                });
+            }
+            if (i == 2) {
+                document.querySelector('.point3').scrollIntoView({
+                    block: "start",
+                    inline: "nearest",
+                    behavior: "smooth"
+                });
+            }
+            if (i == 3) {
+                document.querySelector('.point4').scrollIntoView({
+                    block: "start",
+                    inline: "nearest",
+                    behavior: "smooth"
+                });
+            }
+            if (i == 4) {
+                document.querySelector('.point5').scrollIntoView({
+                    block: "start",
+                    inline: "nearest",
+                    behavior: "smooth"
+                });
+            }
+        }
+    }
+
+    window.setTimeout(() => {
+        console.log('asd');
+        document.onscroll = onScroll
+    }, 1000);
+    //document.onscroll=null;
+}
+// //----menu item light depends to scroll
+// document.onscroll = onScroll;
+//
+// function onScroll() {
+//     let rect1 = document.querySelector('.point1').getBoundingClientRect().y;
+//     let rect2 = document.querySelector('.point2').getBoundingClientRect().y;
+//     let rect3 = document.querySelector('.point3').getBoundingClientRect().y;
+//     let rect4 = document.querySelector('.point4').getBoundingClientRect().y;
+//     let rect5 = document.querySelector('.point5').getBoundingClientRect().y;
+//     let rectArr = [rect1, rect2, rect3, rect4, rect5, 10000];
+//     for (let i = 0; i < 5; i++) {
+//         if ((rectArr[i] - 72) < 0 && (rectArr[i + 1] - 72) > 0) {
+//             arrHeaderLinksMobile.forEach(element => element.classList.remove('header-navigation_onclick'));
+//             arrHeaderLinksMobile[i].classList.add('header-navigation_onclick');
+//         }
+//
+//     }
+//
+// }
+
 
 //--------------change phone pictures
 
@@ -83,6 +208,16 @@ document.querySelector('.mobile_horizontal-unvisible').onclick = function () {
 // }
 
 //------------------------carousel
+//---response
+let sectionWidth;
+sectionWidth = getComputedStyle(document.querySelector('.section')).width.split('px')[0];
+document.querySelector('.section').style.height = `${+sectionWidth * 0.588}px`;
+window.onresize = function (event) {
+    sectionWidth = getComputedStyle(document.querySelector('.section')).width.split('px')[0];
+    document.querySelector('.section').style.height = `${+sectionWidth * 0.588}px`;
+};
+//-----end response
+
 document.querySelector('.left-btn').onclick = animateFramesLeft;
 document.querySelector('.right-btn').onclick = animateFramesRight;
 let firstFrameLeft;
@@ -90,38 +225,39 @@ let secondFrameLeft;
 let firstFrame = document.querySelector(".first__frame");
 let secondFrame = document.querySelector(".second__frame");
 
-function enableLeftButton() {
+function enableButton() {
     document.querySelector('.left-btn').style.pointerEvents = 'auto';
-}
-
-function enableRightButton() {
     document.querySelector('.right-btn').style.pointerEvents = 'auto';
 }
 
 function animateFramesLeft() {
     document.querySelector('.left-btn').style.pointerEvents = 'none';  //disable button while animate
-    window.setTimeout(enableLeftButton, 2000); //enable button after animate
+    document.querySelector('.right-btn').style.pointerEvents = 'none';  //disable button while animate
+    window.setTimeout(enableButton, 2000); //enable button after animate
     firstFrameLeft = (window.getComputedStyle(firstFrame).left.split('px'))[0];
     secondFrameLeft = (window.getComputedStyle(secondFrame).left.split('px'))[0];
-    if (+firstFrameLeft == -1020) {
-        firstFrameLeft = 1020;
-        document.querySelector('.section').style.backgroundColor = '#648BF0';
-    }
-    if (+secondFrameLeft == -1020) {
-        document.querySelector('.section').style.backgroundColor = '#f06c64';
-        secondFrameLeft = 1020;
-    }
+//     console.log(sectionWidth+'----w');
+// console.log(firstFrameLeft+' -----1');
+// console.log(secondFrameLeft+'-----2');
+    if (+firstFrameLeft < -10) firstFrameLeft = 100;  //--- -10 because
+    // chrome dont want 0 )))
+    if (+firstFrameLeft == 0) firstFrameLeft = 0;
+    if (+firstFrameLeft > 10) firstFrameLeft = 100;
+    if (+secondFrameLeft < -10) secondFrameLeft = 100;
+    if (+secondFrameLeft == 0) secondFrameLeft = 0;
+    if (+secondFrameLeft > 10) secondFrameLeft = 100;
+
     document.querySelector(".first__frame").animate([
-        {left: `${+firstFrameLeft}px`},
-        {left: `${+firstFrameLeft - 1020}px`}
+        {left: `${+firstFrameLeft}%`},
+        {left: `${+firstFrameLeft - 100}%`}
     ], {
         duration: 2000,
         easing: "cubic-bezier(.43,-0.29,.58,1.28)",
         fill: "forwards",
     });
     document.querySelector(".second__frame").animate([
-        {left: `${+secondFrameLeft}px`},
-        {left: `${+secondFrameLeft - 1020}px`}
+        {left: `${+secondFrameLeft}%`},
+        {left: `${+secondFrameLeft - 100}%`}
     ], {
         duration: 2000,
         easing: "cubic-bezier(.43,-0.29,.58,1.28)",
@@ -131,28 +267,29 @@ function animateFramesLeft() {
 
 function animateFramesRight() {
     document.querySelector('.right-btn').style.pointerEvents = 'none';  //disable button while animate
-    window.setTimeout(enableRightButton, 2000);
+    document.querySelector('.left-btn').style.pointerEvents = 'none';  //disable button while animate
+    window.setTimeout(enableButton, 2000);
     firstFrameLeft = (window.getComputedStyle(firstFrame).left.split('px'))[0];
     secondFrameLeft = (window.getComputedStyle(secondFrame).left.split('px'))[0];
-    if (+firstFrameLeft == 1020) {
-        firstFrameLeft = -1020;
-        document.querySelector('.section').style.backgroundColor = '#648BF0';
-    }
-    if (+secondFrameLeft == 1020) {
-        secondFrameLeft = -1020;
-        document.querySelector('.section').style.backgroundColor = '#f06c64';
-    }
+    if (+firstFrameLeft < -10) firstFrameLeft = -100;
+    if (+firstFrameLeft == 0) firstFrameLeft = 0;
+    if (+firstFrameLeft > 10) firstFrameLeft = -100;
+
+    if (+secondFrameLeft < -10) secondFrameLeft = -100;
+    if (+secondFrameLeft == 0) secondFrameLeft = 0;
+    if (+secondFrameLeft > 10) secondFrameLeft = -100;
+
     document.querySelector(".first__frame").animate([
-        {left: `${+firstFrameLeft}px`},
-        {left: `${+firstFrameLeft + 1020}px`}
+        {left: `${+firstFrameLeft}%`},
+        {left: `${+firstFrameLeft + 100}%`}
     ], {
         duration: 2000,
         easing: "cubic-bezier(.43,-0.29,.58,1.28)",
         fill: "forwards",
     });
     document.querySelector(".second__frame").animate([
-        {left: `${+secondFrameLeft}px`},
-        {left: `${+secondFrameLeft + 1020}px`}
+        {left: `${+secondFrameLeft}%`},
+        {left: `${+secondFrameLeft + 100}%`}
     ], {
         duration: 2000,
         easing: "cubic-bezier(.43,-0.29,.58,1.28)",
@@ -247,7 +384,7 @@ document.querySelector('form').onsubmit = function (event) {
     const descriptionMessage = formA.elements.detail.value ? formA.elements.detail.value : '';
     const descriptionMessageStrong = formA.elements.detail.value ? 'Description: ' : 'Without' +
         ' description';
-    if(!document.querySelector('.form-modal-wrapper')) {
+    if (!document.querySelector('.form-modal-wrapper')) {
         formA.insertAdjacentHTML("afterbegin", `<div class="form-modal-wrapper">
     <div class="form-modal">
     <p style="color: #d6564f"><strong>The letter was sent</strong></p>
@@ -267,8 +404,18 @@ document.querySelector('form').onsubmit = function (event) {
     }
     document.querySelector(".modal-button").onclick = function (event) {
         document.querySelector(".form-modal-wrapper").remove();
+        document.querySelector('form').reset()
+
     }
 }
 
-
-//document.window.scrollTo(0, 0);
+//--------------------hamburger
+document.querySelector('.hamburger').onclick = function (event) {
+    //console.log(event.target);
+    //this.rotate(90);
+    this.classList.toggle('rotate');
+    document.querySelector('.logo a').classList.toggle('move-left');
+    //document.querySelector('.logo').classList.toggle('move-left-logo');
+    document.querySelector('.nav-mobile').classList.toggle('nav-mobile__visible');
+    document.querySelector('.mega-wrapper').classList.toggle('mega-wrapper__visible');
+}

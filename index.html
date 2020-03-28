@@ -6,15 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="style.css">
-
+    <link rel="shortcut icon" href="assets/s.png" type="image/x-icon">
 
 </head>
 <body>
+
+<nav class="header-navigation nav-mobile hhh">
+    <ul>
+        <li><a href="#">HOME</a></li>
+        <li><span>&#8226;</span><a href="#">SERVICES</a></li>
+        <li><span>&#8226;</span><a href="#">PORTFOLIO</a></li>
+        <li><span>&#8226;</span><a href="#">ABOUT</a></li>
+        <li><span>&#8226;</span><a href="#">CONTACT</a></li>
+    </ul>
+</nav>
 <header class="header" id="header">
+    <div class="hamburger"><span></span></div>
     <div class="logo">
         <a href="#">SINGOLO <span>*</span></a>
     </div>
-    <nav class="header-navigation">
+    <nav class="header-navigation jjj">
         <ul>
             <li><a href="#">HOME</a></li>
             <li><span>&#8226;</span><a href="#">SERVICES</a></li>
@@ -24,6 +35,7 @@
         </ul>
     </nav>
 </header>
+<div class="mega-wrapper"></div>
 <div class="point1"></div>
 <div class="section">
     <div class=" hide-frames">
@@ -60,7 +72,9 @@
             commodo, tortor mauris condimentum nibh. </p>
         <div class="rows-3">
             <article class="rows-first-article">
-                <img src="assets/pen.png" alt="pen" width="59">
+                <div><img src="assets/pen.png" alt="pencil" width="59">
+                </div>
+
                 <div class="content-wrapper">
                     <h2>Custom Design</h2>
                     <p>Curabitur vestibulum eget mauris quis laoreet. Phasellus
@@ -70,7 +84,9 @@
                 </div>
             </article>
             <article>
-                <img src="assets/bulb.png" alt="bulb" width="59">
+                <div><img src="assets/bulb.png" alt="lamp" width="59">
+                </div>
+
                 <div class="content-wrapper">
                     <h2>Inovative Ideas</h2>
                     <p>Quisque luctus, quam eget molestie com- modo, lacus purus
@@ -78,7 +94,9 @@
                 </div>
             </article>
             <article class="rows-fird-article">
-                <img src="assets/heart.png" alt="heart" width="59">
+                <div><img src="assets/heart.png" alt="heart" width="59">
+                </div>
+
                 <div class="content-wrapper">
                     <h2>Love Is The Answer</h2>
                     <p>Nulla sed nunc et tortor luctus faucibus. Morbi at
@@ -87,7 +105,9 @@
                 </div>
             </article>
             <article class="rows-fourth-article">
-                <img src="assets/phone.png" alt="phone" width="59">
+                <div><img src="assets/phone.png" alt="mobile" width="59">
+                </div>
+
                 <div class="content-wrapper">
                     <h2>Responsive Layout</h2>
                     <p>Sed porttitor placerat rhoncus. In at nunc tellus.
@@ -96,7 +116,9 @@
                 </div>
             </article>
             <article>
-                <img src="assets/bubble.png" alt="bubble" width="59">
+                <div><img src="assets/bubble.png" alt="answer" width="59">
+                </div>
+
                 <div class="content-wrapper">
                     <h2>24 / 7 Support</h2>
                     <p>Vivamus vel quam lacinia, tincidunt dui non, vehicula
@@ -106,7 +128,9 @@
                 </div>
             </article>
             <article class="rows-sixth-article">
-                <img src="assets/star.png" alt="star" width="59">
+                <div><img src="assets/star.png" alt="star" width="59">
+                </div>
+
                 <div class="content-wrapper">
                     <h2>Feel Like A Star</h2>
                     <p>Quisque hendrerit purus dapibus, ornare nibh vitae,
@@ -248,7 +272,8 @@
                            autocomplete="off"
                            placeholder="Name (Required)"
                            required>
-                    <input name="email" title="example: peter@gmail.com (max length = 40)"
+                    <input name="email"
+                           title="example: peter@gmail.com (max length = 40)"
                            type="email" maxlength="40"
                            pattern="^[a-zA-Zа-яА-Я0-9!#$%&'*+/=?^_`{|}~-]{1,20}@[a-zA-Zа-яА-я0-9-]{1,15}[.][a-zA-Zа-яА-я0-9]{1,10}$"
                            placeholder="Email (Required)"
@@ -294,7 +319,6 @@
 
     </div>
 </section>
-
 <footer class="footer">
     <div class="wrapper">
         <div class="text">© Copyright 2013
@@ -314,5 +338,7 @@
 </footer>
 
 <script src="script.js"></script>
+
 </body>
+
 </html>
